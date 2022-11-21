@@ -61,21 +61,13 @@ Please refer to the following devnet resource for a complete API definition: htt
 Some of the API's included in the sample python client are as follows and accounts for the configuration object lifecycle. 
 
         * List All Configurations
-
         * List AWS Configurations
-
         * Create AWS Configuration
-
         * List Azure Configurations
-
         * Create Azure Configuration
-
         * Get Configuration ID by Name
-
         * Update Configuration
-
         * Delete Configuration
-
 
 ### Cloud Connections Lifecycle
 
@@ -83,26 +75,16 @@ Please refer to the follwing devnet resources for a complete API definition: htt
 
 Some of the API's included in the sample python client are as follows and accounts for the connection object lifecycle. 
 
-* List All Connections
-
-* List AWS/Azure Connections
-
-* List AWS/Azure Connections filtered by name
-
-* Get connection by conn ID
-
-* Create AWS/Azure Access Key Connection
-
-* Create AWS Role Delegation 
-
-* Add AWS Conn Role
-
-* Configure the connection
-
-* Enable/Disable connection
-
-* Delete Connections
-
+        * List All Connections
+        * List AWS/Azure Connections
+        * List AWS/Azure Connections filtered by name
+        * Get connection by conn ID
+        * Create AWS/Azure Access Key Connection
+        * Create AWS Role Delegation 
+        * Add AWS Conn Role
+        * Configure the connection
+        * Enable/Disable connection
+        * Delete Connections
 
 ### Observe public cloud assets in AppDynamics Cloud
 
