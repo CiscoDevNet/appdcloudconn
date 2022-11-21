@@ -9,13 +9,16 @@
         De-provisioning
 
 ### Use Cases
-        * As a Cloud Admin, automate cloud connections to AWS leveraging AppD Cloud Connections API 
-        to pull metrics data from AWS Services (Load Balancers, Storage, Hosts, Databases)
+        * As a Cloud Admin, automate cloud connections to AWS leveraging AppD 
+        Cloud Connections API to pull metrics data from AWS Services (Load 
+        Balancers, Storage, Hosts, Databases)
 
-        * As a Cloud Admin, automate cloud connections to Azure Cloud leveraging AppD Cloud 
-        Connections API to pull metrics data from Azure Services (Load Balancers, Storage, Hosts)
+        * As a Cloud Admin, automate cloud connections to Azure Cloud 
+        leveraging AppD Cloud Connections API to pull metrics data from Azure 
+        Services (Load Balancers, Storage, Hosts)
 
-        * As DevOps, monitor cloud resources and usage for one or more of your cloud native apps
+        * As DevOps, monitor cloud resources and usage for one or more of 
+        your cloud native apps
 
         
 ![alt text](https://github.com/prathjan/images/blob/main/connxmain.png?raw=true)
