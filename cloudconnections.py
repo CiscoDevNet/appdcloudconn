@@ -21,12 +21,13 @@ monuser = "AppDynamicsCloudMonitoringRole"
 testAwsConfig="TestAWSConfig"
 testAzureConfig="TestAzureConfig"
 
+# delete cloud formation template
 def aws_delete_cft():
     session = boto3.Session(region_name="us-west-2")
     cftclient = session.client('cloudformation')
     cftclient.delete_stack(StackName='rolecreate')
 
-
+# deploy cloud formation template
 def aws_deploy_cft(extId, accId):
     script_dir = os.path.dirname(__file__)
     print(script_dir)
@@ -61,7 +62,7 @@ def aws_deploy_cft(extId, accId):
     #print(cftclient.describe_stacks())
 
 
-
+# get http token
 def get_token(ten_id):
     tokenurl = base_url + "/auth/" + ten_id + "/default/oauth2/token"
     payload='grant_type=client_credentials&client_id=' + APPD_CLIENTID + '&client_secret=' + APPD_SECRET
@@ -76,6 +77,7 @@ def get_token(ten_id):
     print(appd_token)
     return(appd_token)
 
+# given tenant name, get ten id
 def get_ten_id():
     tenurl = "https://observe-tenant-lookup-api.saas.appdynamics.com/tenants/lookup/" + ten_name
 
@@ -90,6 +92,7 @@ def get_ten_id():
     print(ten_id)
     return(ten_id)
 
+# get all tenant cloud connections
 def get_all_connections(appd_token):
     url = base_url + "/cloud/v1/connections"
     payload={}
@@ -102,6 +105,7 @@ def get_all_connections(appd_token):
     print("All Connections:")
     print(json.dumps(json_object, indent = 3))
 
+# get all aws cloud connections
 def get_all_aws_connections(appd_token):
     url = base_url + "/cloud/v1/connections"
     payload={}
@@ -115,6 +119,7 @@ def get_all_aws_connections(appd_token):
     print("AWS Connections:")
     print(json.dumps(json_object, indent = 3))
 
+# get all azure cloud connections
 def get_all_azure_connections(appd_token):
     url = base_url + "/cloud/v1/connections"
     payload={}
@@ -128,6 +133,7 @@ def get_all_azure_connections(appd_token):
     print("Azure Connections:")
     print(json.dumps(json_object, indent = 3))
 
+# create aws cloud connections with keys
 def create_aws_connection_keys(appd_token, configid, accesskey, secretkey):
     url = base_url + "/cloud/v1/connections"
     headers = {
@@ -149,6 +155,7 @@ def create_aws_connection_keys(appd_token, configid, accesskey, secretkey):
     response = requests.request("POST", url, headers=headers, data=json.dumps(data))
     print(response.text)
 
+# create aws cloud connection with role
 def create_aws_connection_role(appd_token, configid, awsAccId):
     url = base_url + "/cloud/v1/connections"
     headers = {
@@ -171,6 +178,7 @@ def create_aws_connection_role(appd_token, configid, awsAccId):
     json_object = json.loads(response.text)
     return json_object['details']['externalId'], json_object['details']['appDynamicsAwsAccountId'], json_object['id']
 
+# create azure cloud connection with subscription info
 def create_azure_connection(appd_token, configid, clientId, clientSecret, tenantId, subsId):
     url = base_url + "/cloud/v1/connections"
     headers = {
@@ -195,6 +203,7 @@ def create_azure_connection(appd_token, configid, clientId, clientSecret, tenant
     json_object = json.loads(response.text)
     return json_object['id']
 
+# update connection role name after its crteated in AWS
 def update_role_name(appd_token, connId):
     url = base_url + "/cloud/v1/connections/" + connId
     headers = {
@@ -210,6 +219,7 @@ def update_role_name(appd_token, connId):
     response = requests.request("PATCH", url, headers=headers, data=json.dumps(data))
     print(response.text)
 
+#activate cloud connection
 def activate_connection(appd_token, connId):
     url = base_url + "/cloud/v1/connections/" + connId
     headers = {
@@ -223,6 +233,7 @@ def activate_connection(appd_token, connId):
     response = requests.request("PATCH", url, headers=headers, data=json.dumps(data))
     print(response.text)
 
+#get AWS connection by name
 def get_aws_connection_by_name(appd_token):
     url = base_url + "/cloud/v1/connections"
     payload={}
@@ -235,6 +246,7 @@ def get_aws_connection_by_name(appd_token):
     json_object = json.loads(response.text)
     return(json_object['items'][0]['id'])
 
+#delete cloud connection, works for both AWS and azure
 def delete_aws_connection(appd_token, conn_id):
     url = base_url + "/cloud/v1/connections/" + conn_id
     headers = {
@@ -245,6 +257,7 @@ def delete_aws_connection(appd_token, conn_id):
     response = requests.request("DELETE", url, headers=headers)
     print(response.text)
 
+#get all cloud configs
 def get_all_configurations(appd_token):
     url = base_url + "/cloud/v1/configurations"
     payload={}
@@ -257,6 +270,7 @@ def get_all_configurations(appd_token):
     print("All Configurations:")
     print(json.dumps(json_object, indent = 3))
 
+#get AWS cloud configs
 def get_aws_configurations_by_name(appd_token):
     url = base_url + "/cloud/v1/configurations"
     payload={}
@@ -269,6 +283,7 @@ def get_aws_configurations_by_name(appd_token):
     json_object = json.loads(response.text)
     return(json_object['items'][0]['id'])
 
+#get Azure cloud configs by name
 def get_azure_configurations_by_name(appd_token):
     url = base_url + "/cloud/v1/configurations"
     payload={}
@@ -281,6 +296,7 @@ def get_azure_configurations_by_name(appd_token):
     json_object = json.loads(response.text)
     return(json_object['items'][0]['id'])
 
+#get AWS cloud configs
 def get_all_aws_configurations(appd_token):
     url = base_url + "/cloud/v1/configurations"
     payload={}
@@ -294,7 +310,7 @@ def get_all_aws_configurations(appd_token):
     print("AWS Configurations:")
     print(json.dumps(json_object, indent = 3))
 
-
+# get all Azure cloud configs
 def get_all_azure_configurations(appd_token):
     url = base_url + "/cloud/v1/configurations"
     payload={}
@@ -308,6 +324,7 @@ def get_all_azure_configurations(appd_token):
     print("Azure Configurations:")
     print(json.dumps(json_object, indent = 3))
 
+# get all AWS services
 def get_all_aws_services(appd_token):
     url = base_url + "/cloud/v1/services"
     payload={}
@@ -321,6 +338,7 @@ def get_all_aws_services(appd_token):
     print("AWS Services:")
     print(json.dumps(json_object, indent = 3))
 
+#get all azure services
 def get_all_azure_services(appd_token):
     url = base_url + "/cloud/v1/services"
     payload={}
@@ -334,7 +352,7 @@ def get_all_azure_services(appd_token):
     print("Azure Services:")
     print(json.dumps(json_object, indent = 3))
 
-
+#get all aws cloud regions
 def get_all_aws_regions(appd_token):
     url = base_url + "/cloud/v1/regions"
     payload={}
@@ -348,6 +366,7 @@ def get_all_aws_regions(appd_token):
     print("AWS Regions:")
     print(json.dumps(json_object, indent = 3))
 
+#get all azure cloud regions
 def get_all_azure_regions(appd_token):
     url = base_url + "/cloud/v1/regions"
     payload={}
@@ -361,6 +380,8 @@ def get_all_azure_regions(appd_token):
     print("Azure Regions:")
     print(json.dumps(json_object, indent = 3))
 
+
+#create aws cloud config
 def create_aws_config(appd_token):
     url = base_url + "/cloud/v1/configurations"
     headers = {
@@ -393,6 +414,7 @@ def create_aws_config(appd_token):
     response = requests.request("POST", url, headers=headers, data=json.dumps(data))
     print(response.text)
 
+# delete aws cloud config
 def delete_aws_config(appd_token, config_id):
     url = base_url + "/cloud/v1/configurations/" + config_id
     headers = {
@@ -403,6 +425,7 @@ def delete_aws_config(appd_token, config_id):
     response = requests.request("DELETE", url, headers=headers)
     print(response.text)
 
+# create azure cloud config
 def create_azure_config(appd_token):
     url = base_url + "/cloud/v1/configurations"
     headers = {
