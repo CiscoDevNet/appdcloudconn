@@ -88,6 +88,10 @@ Some of the API's included in the sample python client are as follows and accoun
 
 ### Observe public cloud assets in AppDynamics Cloud
 
+Check for a successful cloud connection before you Observe in AppD Cloud UI:
+
+![alt text](https://github.com/prathjan/images/blob/main/succconn.png?raw=true)
+
 After a successful cloud connection with your AWS/Azure account, you can view the metrics for the services you enabled in your cloud configuration:
 
 * Summary:
