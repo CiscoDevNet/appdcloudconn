@@ -36,6 +36,8 @@
         * Azure Cloud Tenant ID
         * Azure Cloud Client ID and Secret
 
+3. Requires AppDynamics Cloud Tenant, ClientID and Secret. For the purposes of this exercise, this has been created as described in the following link: https://developer.cisco.com/docs/access-mgmt-service/#!authentication
+
 ### Python Cloud Connections Client
 
 Check out a sample python client to exercise the Cloud Connections API here: https://github.com/CiscoDevNet/connxapi/blob/main/cloudconnections.py.
