@@ -1,4 +1,4 @@
-# Monitor public cloud assets with Cloud Connections to AppD Cloud 
+# Monitor public cloud assets with Cloud Cloud Observability
 ## Contents
         Use Cases
         Pre-requisites, Guidelines
@@ -36,7 +36,7 @@
         * Azure Cloud Tenant ID
         * Azure Cloud Client ID and Secret
 
-3. Requires AppDynamics Cloud Tenant, ClientID and Secret. For the purposes of this exercise, this has been created manually as described in the following link: https://developer.cisco.com/docs/access-mgmt-service/#!authentication
+3. Requires Cloud Cloud Observability, ClientID and Secret. For the purposes of this exercise, this has been created manually as described in the following link: https://developer.cisco.com/docs/access-mgmt-service/#!authentication
 
 ### Python Cloud Connections Client
 

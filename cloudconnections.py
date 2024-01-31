@@ -7,6 +7,8 @@ from requests.structures import CaseInsensitiveDict
 urllib3.disable_warnings()
 APPD_SECRET = os.getenv('APPD_SECRET')
 APPD_CLIENTID = os.getenv('APPD_CLIENTID')
+APPD_SECRET_BAS = os.getenv('APPD_SECRET_BAS')
+APPD_CLIENTID_BAS = os.getenv('APPD_CLIENTID_BAS')
 base_url = os.getenv('BASE_URL')
 ten_name = os.getenv('TEN_NAME')
 accesskey = os.getenv('AWS_ACCESS_KEY')
@@ -76,6 +78,25 @@ def get_token(ten_id):
     appd_token = token_json['access_token']
     print(appd_token)
     return(appd_token)
+
+# get token with Basic auth
+def get_token_basic(ten_id):
+    tokenurl = base_url + "/auth/" + ten_id + "/default/oauth2/token"
+    #payload='grant_type=client_credentials&client_id=' + APPD_CLIENTID + '&client_secret=' + APPD_SECRET
+    payload='grant_type=client_credentials'
+    #print(payload)
+    headers = {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Basic c3J2XzNSWjRNbHlKbFRkZWlDbGNsNVp1MjM6emJPTkZYVnhnNTY0ZWJmTkNSYjZIOHBaQXhLdXJvVDhOUkl6MDBGajdzUQ=='
+    }
+    response = requests.request("POST", tokenurl, headers=headers, data=payload)
+    print(response.json)
+    token_json = response.json()
+    appd_token = token_json['access_token']
+    print(appd_token)
+    return(appd_token)
+
+
 
 # given tenant name, get ten id
 def get_ten_id():
@@ -482,7 +503,8 @@ def create_azure_config(appd_token):
     print(response.text)
 
 ten_id=get_ten_id()
-appd_token = get_token(ten_id)
+#appd_token = get_token(ten_id)
+appd_token = get_token_basic(ten_id)
 
 #Configurations
 #get_all_configurations(appd_token)
@@ -525,3 +547,4 @@ appd_token = get_token(ten_id)
 #delete_azure_config(config_id)
 #config_id = get_aws_connection_by_name(appd_token)
 #delete_aws_connection(appd_token, config_id)
+
