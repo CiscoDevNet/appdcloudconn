@@ -1,11 +1,11 @@
-# Monitor public cloud assets with Cloud Cloud Observability
+# Monitor public cloud assets with Cisco Cloud Observability Platform
 ## Contents
         Use Cases
         Pre-requisites, Guidelines
         Python Cloud Connections Client
         Cloud Configuration Lifecycle
         Cloud Connections Lifecycle
-        Observe public cloud assets in AppDynamics Cloud
+        Observe public cloud assets in Cisco Cloud Observability Platform
         De-provisioning
 
 ### Use Cases
@@ -88,7 +88,7 @@ Some of the API's included in the sample python client are as follows and accoun
         * Enable/Disable connection
         * Delete Connections
 
-### Observe public cloud assets in AppDynamics Cloud
+### Observe public cloud assets in Cisco Cloud Observability Platform
 
 Check for a successful cloud connection before you Observe in AppD Cloud UI:
 
