@@ -9,12 +9,12 @@
         De-provisioning
 
 ### Use Cases
-        * As a Cloud Admin, automate cloud connections to AWS leveraging AppD 
+        * As a Cloud Admin, automate cloud connections to AWS leveraging Cisco Cloud Observability Platform 
         Cloud Connections API to pull metrics data from AWS Services (Load 
         Balancers, Storage, Hosts, Databases)
 
         * As a Cloud Admin, automate cloud connections to Azure Cloud 
-        leveraging AppD Cloud Connections API to pull metrics data from Azure 
+        leveraging Cisco Cloud Observability Platform Connections API to pull metrics data from Azure 
         Services (Load Balancers, Storage, Hosts)
 
         * As DevOps, monitor cloud resources and usage for one or more of 
@@ -28,7 +28,7 @@
 
         * AWS Account ID
         * AWS Access Key and AWS Secret key with API access
-        * AppDynamics Client ID and Secret
+        * Cisco Cloud Observability Platform Client ID and Secret
 
 2. Requires a Azure Cloud account to set up Azure Cloud Connection. Following cloud specific data is needed to set up cloud connections:
 
@@ -90,7 +90,7 @@ Some of the API's included in the sample python client are as follows and accoun
 
 ### Observe public cloud assets in Cisco Cloud Observability Platform
 
-Check for a successful cloud connection before you Observe in AppD Cloud UI:
+Check for a successful cloud connection before you Observe in Cisco Cloud Observability Platform UI:
 
 ![alt text](https://github.com/prathjan/images/blob/main/succconn.png?raw=true)
 
